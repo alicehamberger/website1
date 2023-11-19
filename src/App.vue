@@ -1,16 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <TopMenuBar />
+    <RightMenu/>
+    <!-- Router View -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import RightMenu from './components/RightMenu.vue';
+import TopMenuBar from './components/MenuBar.vue'; // Import the TopMenuBar component
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    TopMenuBar // Register the TopMenuBar component
+    ,
+    RightMenu
+}
 }
 </script>
 
@@ -23,4 +30,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+body {
+  cursor: url('assets/bigcursor.png'), auto; /* Replace with the path to your circle cursor image */
+}
+
+a:hover {
+  cursor: url('assets/smallcursor.png'), auto; /* Replace with the path to your contracted circle cursor image */
+}
 </style>
+
