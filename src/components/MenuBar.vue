@@ -25,15 +25,27 @@
       };
     },
     mounted() {
-      window.addEventListener('mousemove', this.handleMouseMove);
+    // Set initial visibility based on window width
+    this.isVisible = window.innerWidth <= 768;
+    
+    window.addEventListener('mousemove', this.handleMouseMove);
+    window.addEventListener('resize', this.handleWindowResize);
+  },
+  methods: {
+    isMobileDevice() {
+      return window.innerWidth <= 768;
     },
-    methods: {
-      handleMouseMove(event) {
+    handleMouseMove(event) {
+      if (!this.isMobileDevice()) {
         this.isVisible = event.clientY < 50;
       }
+    },
+    handleWindowResize() {
+      this.isVisible = this.isMobileDevice();
     }
   }
-  </script>
+}
+</script>
   
   <style scoped>
     .top-menu-bar {
