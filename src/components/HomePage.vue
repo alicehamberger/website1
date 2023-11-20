@@ -17,7 +17,7 @@ export default {
 // Any component logic goes here - should it be inside export default?
 </script>
 
-<style>
+<style scoped>
 body {
   background-color: rgb(160, 228, 1);
   color: white;

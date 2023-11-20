@@ -78,43 +78,44 @@
     </div>
   </template>
   
-<script>
-export default {
-  name: 'WhiteTable',
-  data() {
-    return {
-      items: [
-        { word: 'Alice Rose Hamberger', link: 'https://www.linkedin.com/in/alice-rose-hamberger2000/' },
-        { word: '@alice.rosee', link: 'https://instagram.com/alice.rosee' },
-        { word: 'github', link: 'https://github.com/alicehamberger' },
-        { word: 'tech cv', link: 'https://alicehamberger.github.io/tech-CV/docs/techCV.pdf' },
-        { word: 'creative cv', link: 'https://alicehamberger.github.io/creative-CV/docs/creativeCV.pdf' },
-        { word: 'alicehamberger@gmail.com', link: 'mailto:alicehamberger@gmail.com' },
-      ],
-    };
-  },
-  computed: {
-    pairedItems() {
-      const pairedWords = ['@alice.rosee', 'creative cv', 'github', 'tech cv'];
-      const paired = [
-        [this.items.find(item => item.word === '@alice.rosee'), this.items.find(item => item.word === 'creative cv')],
-        [this.items.find(item => item.word === 'github'), this.items.find(item => item.word === 'tech cv')],
-      ];
-
-      const unpaired = this.items.filter(item => !pairedWords.includes(item.word)).map(item => [item]);
-      return paired.concat(unpaired);
-    }
-  },
-  methods: {
-    randomPosition() {
-      const x = Math.random() * 80;
-      const y = Math.random() * 80;
-      return `position: absolute; top: ${y}%; left: ${x}%;`;
+  <script>
+  export default {
+    name: 'WhiteTable',
+    data() {
+      return {
+        items: [
+          { word: 'Alice Rose Hamberger', link: 'https://www.linkedin.com/in/alice-rose-hamberger2000/' },
+          { word: '@alice.rosee', link: 'https://instagram.com/alice.rosee' },
+          { word: 'github', link: 'https://github.com/alicehamberger' },
+          { word: 'tech cv', link: 'https://alicehamberger.github.io/tech-CV/docs/techCV.pdf' },
+          { word: 'creative cv', link: 'https://alicehamberger.github.io/creative-CV/docs/creativeCV.pdf' },
+          { word: 'alicehamberger@gmail.com', link: 'mailto:alicehamberger@gmail.com' },
+        ],
+      };
     },
-  },
-};
-</script>
-
+    computed: {
+      pairedItems() {
+        const alice = this.items.find(item => item.word === 'Alice Rose Hamberger');
+        const pairedWords = ['@alice.rosee', 'creative cv', 'github', 'tech cv', 'Alice Rose Hamberger'];
+        const paired = [
+          [this.items.find(item => item.word === '@alice.rosee'), this.items.find(item => item.word === 'creative cv')],
+          [this.items.find(item => item.word === 'github'), this.items.find(item => item.word === 'tech cv')],
+        ];
+  
+        const unpaired = this.items.filter(item => !pairedWords.includes(item.word)).map(item => [item]);
+        return [[alice]].concat(paired, unpaired);
+      }
+    },
+    methods: {
+      randomPosition() {
+        const x = Math.random() * 80;
+        const y = Math.random() * 80;
+        return `position: absolute; top: ${y}%; left: ${x}%;`;
+      },
+    },
+  };
+  </script>
+  
 
 <style scoped>
 .table {
