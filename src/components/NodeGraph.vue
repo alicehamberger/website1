@@ -12,6 +12,7 @@
     },
     methods: {
       createGraph() {
+        const vm = this; // This holds the Vue instance
         const data = [
         { id: 0, label: 'page 0', x: 250, y: 300, path: '/' },
         { id: 1, label: 'creative', x: 300, y: 100, path: '/page1' },
@@ -46,8 +47,8 @@
                 .duration(500)
                 .attr('r', 40);
             })
-            .on('click', function(d) { 
-              window.location.href = d.path;
+            .on('click', function(event, d) {
+              vm.$router.push(d.path);
             });
   
         svg.selectAll('text')
